@@ -1,0 +1,15 @@
+
+[Unit]
+Description=sudoServer
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+Type=exec
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/python3 /home/pi/docker-mounts/ha/scripts/sudoServer.py
+
+[Install]
+WantedBy=multi-user.target
