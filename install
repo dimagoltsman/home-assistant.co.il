@@ -17,6 +17,7 @@ pip3 install Flask-RESTful
 sudo pip3 install Flask
 sudo pip3 install Flask-RESTful
 sudo mv home-assistant.co.il/sudoServer.service /etc/systemd/system/
+cd home-assistant.co.il
 mv docker-mounts /home/pi
 cd /home/pi/docker-mounts
 sudo systemctl start sudoServer.service
