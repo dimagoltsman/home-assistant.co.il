@@ -1,0 +1,5 @@
+upgrade_homeassistant:
+  alias: Upgrade HomeAssistant
+  sequence:
+  - service: shell_command.upgrade_ha
+  mode: single

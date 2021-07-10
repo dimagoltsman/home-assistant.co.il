@@ -1,0 +1,71 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "title": "Home",
+            "background": "var(--background-image)",
+            "custom_header": {
+                "background": "rgba(155, 155, 155, 0.25)",
+                "button_text": {
+                    "options": "{{ hours24 }}:{{ minutesLZ }}"
+                },
+                "compact_mode": true,
+                "editor_warnings": false,
+                "exceptions": [
+                    {
+                        "conditions": {},
+                        "config": {}
+                    }
+                ],
+                "swipe_animate": "fade",
+                "swipe_prevent_default": true
+            },
+            "views": [
+                {
+                    "path": "default_view",
+                    "title": "Home",
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "binary_sensor.updater"
+                            ],
+                            "title": "Binary sensor"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sun.sun"
+                            ],
+                            "title": "Sun"
+                        }
+                    ]
+                },
+                {
+                    "icon": "mdi:raspberry-pi",
+                    "title": "System",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.current_version"
+                                },
+                                {
+                                    "entity": "sensor.latest_relese"
+                                },
+                                {
+                                    "entity": "script.upgrade_homeassistant"
+                                }
+                            ],
+                            "show_header_toggle": false,
+                            "title": "Home Assistant",
+                            "type": "entities"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

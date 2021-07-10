@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+
+    portainer:
+        restart: always
+        hostname: portainer
+        container_name: Portrainer
+        image: portainer/portainer-ce
+        environment:
+          TZ: "Asia/Jerusalem"
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - /opt/portainer:/data
+        network_mode: "bridge"
+        ports:
+          - "9000:9000"
+
+
+    cloud9:
+        restart: always
+        hostname: cloud9
+        container_name: cloud9
+        image: linuxserver/cloud9:latest
+        environment:
+          PUID: 0
+          PGID: 0
+          TZ: "Asia/Jerusalem"
+        volumes:
+          - /home/pi/docker-mounts:/code
+          - /var/run/docker.sock:/var/run/docker.sock
+        network_mode: "bridge"
+        ports:
+          - "8000:8000"
+
+
+    ouroboros:
+      image: pyouroboros/ouroboros
+      container_name: ouroboros
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      environment:
+        - TZ=Asia/Jerusalem
+        - CLEANUP=true
+        - LOG_LEVEL=info
+        - SELF_UPDATE=true
+        - LABEL_ENABLE=true
+        - LATEST=true
+        - CRON="0 6 * * *"
+      restart: always
+      
+      
+    homeassistant:
+        restart: always
+        hostname: homeassistant
+        container_name: Home-Assistant
+        image: ghcr.io/home-assistant/raspberrypi4-homeassistant:stable
+        privileged: true
+        labels:
+          com.ouroboros.enable: "false"
+        environment:
+          USER: ${HA_USER}
+          PASS: ${HA_PASS}
+        volumes:
+          - /home/pi/docker-mounts/ha:/config
+          - /etc/localtime:/etc/localtime:ro
+        network_mode: "host"

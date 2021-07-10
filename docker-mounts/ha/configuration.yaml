@@ -1,0 +1,30 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /
+      - type: memory_free
+      - type: processor_use
+      
+  - platform: cpuspeed
+  - platform: version
+  
+  - platform: command_line
+    name: Latest relese
+    command: curl -s https://version.home-assistant.io/stable.json | jq ".homeassistant.default" | sed 's/"//g'
+    scan_interval: 180
+    
+shell_command:
+  upgrade_ha: curl -s 127.0.0.1:5002/execute/bash/upgradeHA
