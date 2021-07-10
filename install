@@ -1,3 +1,6 @@
+LC_ALL=en_US.UTF-8
+en_US.UTF-8 UTF-8
+LANG=en_US.UTF-8
 cd /home/pi
 git clone https://github.com/dimagoltsman/home-assistant.co.il.git
 sudo apt-get update && sudo apt-get upgrade -y
