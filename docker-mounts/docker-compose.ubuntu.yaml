@@ -61,6 +61,6 @@ services:
           USER: ${HA_USER}
           PASS: ${HA_PASS}
         volumes:
-          - /home/pi/docker-mounts/ha:/config
+          - /home/ha/docker-mounts/ha:/config
           - /etc/localtime:/etc/localtime:ro
         network_mode: "host"
