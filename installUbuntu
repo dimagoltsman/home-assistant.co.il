@@ -1,0 +1,35 @@
+
+cd ~
+git clone https://github.com/dimagoltsman/home-assistant.co.il.git
+sudo apt-get update && sudo apt-get upgrade -y
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker pi
+sudo apt-get install -y libffi-dev libssl-dev
+sudo apt install python3-dev
+sudo apt-get install -y python3 python3-pip
+sudo pip3 install docker-compose
+sudo systemctl enable docker
+pip3 install Flask
+pip3 install Flask-RESTful
+sudo pip3 install Flask
+sudo pip3 install Flask-RESTful
+sudo mv home-assistant.co.il/sudoServer.service /etc/systemd/system/
+cd home-assistant.co.il
+mv docker-mounts ~
+cd ~/docker-mounts
+rm docker-compose.yaml
+mv docker-compose.ubuntu.yaml docker-compose.yaml
+sudo systemctl start sudoServer.service
+sudo systemctl enable sudoServer.service
+sudo docker-compose up -d
+sudo chmod -R 777 ha
+cd ha.toCopy
+echo "Waiting for home assistant container to start, this can take few minutes..."
+sleep 60
+sudo cp -R * ../ha
+cd ~/docker-mounts
+sudo rm -rf ha.toCopy
+cd ~
+sudo docker restart Home-Assistant
+echo "Done!"
