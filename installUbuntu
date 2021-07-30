@@ -24,8 +24,10 @@ mv docker-mounts /home/ha
 cd /home/ha/docker-mounts
 rm docker-compose.yaml
 mv docker-compose.ubuntu.yaml docker-compose.yaml
-sudo systemctl start sudoServer.service
+sleep 5
 sudo systemctl enable sudoServer.service
+sleep 5
+sudo systemctl start sudoServer.service
 sudo docker-compose up -d
 mkdir ha
 sudo chmod -R 777 ha
@@ -37,4 +39,5 @@ cd /home/ha/docker-mounts
 sudo rm -rf ha.toCopy
 cd /home/ha
 sudo docker restart Home-Assistant
+sudo systemctl start sudoServer.service
 echo "Done!"
