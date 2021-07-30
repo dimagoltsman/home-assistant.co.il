@@ -5,3 +5,10 @@
 ```
 curl -s https://raw.githubusercontent.com/dimagoltsman/home-assistant.co.il/main/install | sh
 ```
+
+
+ubuntu:
+
+```
+wget -O https://raw.githubusercontent.com/dimagoltsman/home-assistant.co.il/main/installUbuntu | sh
+``

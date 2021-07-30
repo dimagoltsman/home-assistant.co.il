@@ -1,12 +1,14 @@
 
-cd ~
-git clone https://github.com/dimagoltsman/home-assistant.co.il.git
+sudo mkdir /home/ha
+cd /home/ha
+sudo chmod 777 .
 sudo apt-get update && sudo apt-get upgrade -y
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker pi
+sudo apt install git -y
+git clone https://github.com/dimagoltsman/home-assistant.co.il.git
+sudo apt install curl -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo apt-get install -y libffi-dev libssl-dev
-sudo apt install python3-dev
+sudo apt install -y python3-dev
 sudo apt-get install -y python3 python3-pip
 sudo pip3 install docker-compose
 sudo systemctl enable docker
@@ -14,10 +16,12 @@ pip3 install Flask
 pip3 install Flask-RESTful
 sudo pip3 install Flask
 sudo pip3 install Flask-RESTful
+rm home-assistant.co.il/sudoServer.service
+mv home-assistant.co.il/sudoServer.ubuntu.service home-assistant.co.il/sudoServer.service
 sudo mv home-assistant.co.il/sudoServer.service /etc/systemd/system/
 cd home-assistant.co.il
-mv docker-mounts ~
-cd ~/docker-mounts
+mv docker-mounts /home/ha
+cd /home/ha/docker-mounts
 rm docker-compose.yaml
 mv docker-compose.ubuntu.yaml docker-compose.yaml
 sudo systemctl start sudoServer.service
@@ -28,8 +32,8 @@ cd ha.toCopy
 echo "Waiting for home assistant container to start, this can take few minutes..."
 sleep 60
 sudo cp -R * ../ha
-cd ~/docker-mounts
+cd /home/ha/docker-mounts
 sudo rm -rf ha.toCopy
-cd ~
+cd /home/ha
 sudo docker restart Home-Assistant
 echo "Done!"
