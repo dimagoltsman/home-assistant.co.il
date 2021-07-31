@@ -27,6 +27,7 @@ sudo chmod -R 777 ha
 cd ha.toCopy
 echo "Waiting for home assistant container to start, this can take few minutes..."
 sleep 60
+mkdir ../ha
 sudo cp -R * ../ha
 cd /home/pi/docker-mounts
 sudo rm -rf ha.toCopy

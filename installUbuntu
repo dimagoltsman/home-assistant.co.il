@@ -30,8 +30,8 @@ sleep 5
 sudo systemctl enable sudoServer.service
 sleep 5
 sudo systemctl start sudoServer.service
-sudo docker-compose up -d
 mkdir ha
+sudo docker-compose up -d
 sudo chmod -R 777 ha
 cd ha.toCopy
 echo "Waiting for home assistant container to start, this can take few minutes..."
