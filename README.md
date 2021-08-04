@@ -7,7 +7,7 @@ curl -s https://raw.githubusercontent.com/dimagoltsman/home-assistant.co.il/main
 ```
 
 
-# To install on Ubuntu, open terminal or ssh to it and run:
+# To install on Ubuntu 20, open terminal or ssh to it and run:
 
 ```
 wget -O - https://raw.githubusercontent.com/dimagoltsman/home-assistant.co.il/main/installUbuntu | sh
