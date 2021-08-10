@@ -2,7 +2,7 @@ LC_ALL=en_US.UTF-8
 en_US.UTF-8 UTF-8
 LANG=en_US.UTF-8
 cd /home/pi
-sudo apt-get install -y
+sudo apt-get install -y git
 git clone https://github.com/dimagoltsman/home-assistant.co.il.git
 sudo apt-get update && sudo apt-get upgrade -y
 curl -fsSL https://get.docker.com -o get-docker.sh
