@@ -1,8 +1,9 @@
 cd /home/pi
 sudo apt-get install -y git
 git clone https://github.com/dimagoltsman/home-assistant.co.il.git
-sudo apt-get update && sudo apt-get upgrade -y
- sudo apt install -y docker-ce
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
 sudo usermod -aG docker pi
 sudo apt-get install -y libffi-dev libssl-dev
 sudo apt install python3-dev
