@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/pi/docker-mounts/compose
+cd /home/pi/docker-mounts/
 
 /usr/local/bin/docker-compose pull homeassistant
 
